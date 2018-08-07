@@ -2,24 +2,29 @@ console.log('Starting app.js');
 
 const fs = require('fs');
 const _ = require('lodash');
-
+const yargs = require('yargs');
 const notes = require('./notes.js');
 
-var command = process.argv[2];
+var argv = yargs.argv;
+var command = argv._[0];
 console.log('Command:',command);
+
+console.log('Proccess:',process.argv);
+console.log('Yargs:',argv);
+
 
 switch(command) {
   case 'add':
-    console.log('Adding new note!');
+    notes.addNote(argv.title, argv.body);
     break;
   case 'list':
-    console.log('Listing all notes!');
+    notes.getAll();
     break;
   case 'read':
-    console.log('Reading a note!');
+    notes.readNote(argv.title);
     break;
   case 'remove':
-    console.log('Removing a note!');
+    notes.removeNote(argv.title);
     break;
   default:
     console.log('Command not found!')
