@@ -29,7 +29,14 @@ switch(command) {
     notes.readNote(argv.title);
     break;
   case 'remove':
-    notes.removeNote(argv.title);
+    var wasNoteRemoved = notes.removeNote(argv.title);
+
+    if (wasNoteRemoved) {
+      console.log(`Note with title: '${argv.title}' was removed with success!`);
+    } else {
+      console.log(`Note with title: '${argv.title}' was not found!`);
+    }
+
     break;
   default:
     console.log('Command not found!')
