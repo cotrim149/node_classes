@@ -16,17 +16,14 @@ console.log('Yargs:',argv);
 switch(command) {
   case 'add':
     var note = notes.addNote(argv.title, argv.body);
-    if (note === undefined) {
-      console.log(`Note with Title:'${argv.title}' was alredy added!`);
-    } else {
-      console.log(`Note with\nTitle:${note.title}\nBody:${note.body}\nAdded with success!`);
-    }
+    notes.logNote(note);
     break;
   case 'list':
     notes.getAll();
     break;
   case 'read':
-    notes.readNote(argv.title);
+    var note = notes.readNote(argv.title);
+    notes.logNote(note);
     break;
   case 'remove':
     var wasNoteRemoved = notes.removeNote(argv.title);
