@@ -1,5 +1,3 @@
-console.log('Starting app.js');
-
 const fs = require('fs');
 const _ = require('lodash');
 const yargs = require('yargs');
@@ -7,16 +5,15 @@ const notes = require('./notes.js');
 
 var argv = yargs.argv;
 var command = argv._[0];
-console.log('Command:',command);
-
-console.log('Proccess:',process.argv);
-console.log('Yargs:',argv);
-
 
 switch(command) {
   case 'add':
     var note = notes.addNote(argv.title, argv.body);
-    notes.logNote(note);
+    if (note) {
+      notes.logNote(note);
+    } else {
+      console.log('Note cannot be add!');
+    }
     break;
   case 'list':
     var allNotes = notes.getAll(); 
@@ -27,7 +24,13 @@ switch(command) {
     break;
   case 'read':
     var note = notes.readNote(argv.title);
-    notes.logNote(note);
+
+    if(note) {
+      notes.logNote(note);
+    } else {
+      console.log('Note not found!');
+    }
+
     break;
   case 'remove':
     var wasNoteRemoved = notes.removeNote(argv.title);

@@ -1,7 +1,4 @@
-console.log('Starting notes.js');
-
 const fs = require('fs');
-
 
 var fetchNotes = () => {
   try{
@@ -53,15 +50,9 @@ var removeNote = (title) => {
 };
 
 var logNote = (note) => {
-
-  if (note) {
-    console.log('\n --- \n');
-    console.log('Title: '+ note.title);
-    console.log('Body: '+ note.body);
-    console.log('\n --- \n');
-  } else {
-    console.log('Note not found');
-  }
+  console.log('\n --- \n');
+  console.log('Title: '+ note.title);
+  console.log('Body: '+ note.body);
 };
 
 module.exports = {
