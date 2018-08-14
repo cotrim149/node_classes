@@ -16,11 +16,9 @@ var asyncAdd = (a, b) => {
 asyncAdd(5 , 7).then((result) => {
   console.log(`Result: ${result}`);
   return asyncAdd(result, 33);
-}, (errorMessage) => {
-  console.log(errorMessage);
 }).then((result) => {
   console.log('Expect result be 45. Result: ',result);
-}, (errorMessage) => {
+}).catch((errorMessage) => {
   console.log(errorMessage);
 });
 
