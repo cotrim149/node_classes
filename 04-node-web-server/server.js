@@ -7,14 +7,14 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-  // res.send('<h1>Hello express!</h1>');
-  res.send( {
-    name: 'Cotrim',
-    likes: [
-      'swimming',
-      'programming'
-    ]
-  });
+  var homePageContent = {
+    headTitle: 'Home',
+    pageTitle: 'My custom Home page',
+    welcomeMessage: 'Welcome to my personal site!',
+    currentYear: new Date().getFullYear()
+  };
+
+  res.render('home.hbs', homePageContent);
 });
 
 app.get('/about', (req, res) => {
