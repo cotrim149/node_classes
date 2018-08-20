@@ -10,8 +10,6 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
 // adding middlewares
-// setting static folder of public htmls
-app.use(express.static(__dirname + '/public'));
 // setting pre reponse for each connection
 app.use((req, res, next) => {
   var now = new Date().toString();
@@ -25,6 +23,14 @@ app.use((req, res, next) => {
   });
   next();
 });
+
+// call this middleware in each request
+// app.use((req, res, next)=>{
+//   res.render('maintenance.hbs');
+// });
+
+// setting static folder of public htmls
+app.use(express.static(__dirname + '/public'));
 
 // adding helpers
 hbs.registerHelper('getCurrentYear', () => {
