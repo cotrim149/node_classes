@@ -69,6 +69,15 @@ app.get('/bad', (req,res) => {
   });
 })
 
+app.get('/projects', (req,res) => {
+  var projectsPageContent = {
+    headTitle: 'Projects',
+    pageTitle: 'Projects',
+    portifolioMessage: 'This is my portifolio page!'
+  };
+  res.render('projects.hbs', projectsPageContent);
+});
+
 // put node to listen in 3000 port of localhost
 app.listen(port, () => {
   console.log('Server is up on port ' + port);
